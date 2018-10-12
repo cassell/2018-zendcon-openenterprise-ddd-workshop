@@ -8,10 +8,10 @@ services:
       container_name: zendcon-2018-mariadb
       working_dir: /application
       environment:
-        - MYSQL_ROOT_PASSWORD=belgium
+        - MYSQL_ROOT_PASSWORD=vegas
         - MYSQL_DATABASE=beeriously
         - MYSQL_USER=growler
-        - MYSQL_PASSWORD=belgium
+        - MYSQL_PASSWORD=vegas
       ports:
         - "62338:3306"
 

@@ -23,7 +23,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Beeriously\\": "src/"
+            "Beeriously\\": "src/",
+            "Beeriously\\Tests\\": "tests/"
         }
     },
     "scripts": {

@@ -22,9 +22,9 @@ or
 ````
 docker-compose build
 docker-compose up -d
-docker run --rm --interactive --tty --network 2018zendconopenenterprisedddworkshop_default mariadb:10.1 mysql --host=mariadb --user=root --password=belgium --batch -e "drop database if exists beeriously; create database beeriously;"
-docker run --rm --interactive --tty --network 2018zendconopenenterprisedddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2018zendconopenenterprisedddworkshop_php-fpm composer install
-docker run --rm --interactive --tty --network 2018zendconopenenterprisedddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2018zendconopenenterprisedddworkshop_php-fpm /app/bin/console doctrine:migrations:migrate --no-interaction -v
+docker run --rm --interactive --tty --network 2018-zendcon-openenterprise-ddd-workshop_default mariadb:10.1 mysql --host=mariadb --user=root --password=vegas --batch -e "drop database if exists beeriously; create database beeriously;"
+docker run --rm --interactive --tty --network 2018-zendcon-openenterprise-ddd-workshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2018-zendcon-openenterprise-ddd-workshop_php-fpm composer install
+docker run --rm --interactive --tty --network 2018-zendcon-openenterprise-ddd-workshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2018-zendcon-openenterprise-ddd-workshop_php-fpm /app/bin/console doctrine:migrations:migrate --no-interaction -v
 ````
 
 If you can then run and only see that tests are failing then you are good to go:
@@ -34,8 +34,8 @@ make integration
 ````
 or
 ````
-docker run --rm --interactive --tty --network 2018zendconopenenterprisedddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2018zendconopenenterprisedddworkshop_php-fpm /app/vendor/bin/phpunit --configuration /app/src/Tests/Unit/phpunit.xml.dist
-docker run --rm --interactive --tty --network 2018zendconopenenterprisedddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2018zendconopenenterprisedddworkshop_php-fpm /app/vendor/bin/phpunit --configuration /app/src/Tests/Integration/phpunit.xml.dist
+docker run --rm --interactive --tty --network 2018-zendcon-openenterprise-ddd-workshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2018-zendcon-openenterprise-ddd-workshop_php-fpm /app/vendor/bin/phpunit --configuration /app/src/Tests/Unit/phpunit.xml.dist
+docker run --rm --interactive --tty --network 2018-zendcon-openenterprise-ddd-workshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2018-zendcon-openenterprise-ddd-workshop_php-fpm /app/vendor/bin/phpunit --configuration /app/src/Tests/Integration/phpunit.xml.dist
 ````
 
 
