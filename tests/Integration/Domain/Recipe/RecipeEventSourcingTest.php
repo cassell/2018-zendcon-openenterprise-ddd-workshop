@@ -39,14 +39,14 @@ class RecipeEventSourcingTest  extends ContainerAwareTestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage("Unable to measure less than 0.1 on scale.");
         $recipe = Recipe::newRecipe(new RecipeName('NEIPHPA'), new \DateTimeImmutable());
-        $recipe->addGrain($this->getTwoRow(), Kilograms::fromPounds(new Pounds(0)));
+        $recipe->addGrain($this->getTwoRowBarley(), Kilograms::fromPounds(new Pounds(0)));
 
     }
 
     public function testAddGrainToRecipe()
     {
         $recipe = Recipe::newRecipe(new RecipeName('NEIPHPA'),new \DateTimeImmutable());
-        $recipe->addGrain($this->getTwoRow(),Kilograms::fromPounds(new Pounds(11)));
+        $recipe->addGrain($this->getTwoRowBarley(),Kilograms::fromPounds(new Pounds(11)));
         $recipe->addGrain($this->getOats(),Kilograms::fromPounds(new Pounds(1)));
         $recipe->addGrain($this->getMarrisOtter(),Kilograms::fromPounds(new Pounds(1)));
         $recipe->addGrain($this->getPilsner(),Kilograms::fromPounds(new Pounds(1)));
@@ -56,7 +56,7 @@ class RecipeEventSourcingTest  extends ContainerAwareTestCase
 
     }
 
-    private function getTwoRow(): Grain
+    private function getTwoRowBarley(): Grain
     {
         return $this->findGrainById('c9fe257d-ef6e-47ac-8c5f-ffd328147c78');
 

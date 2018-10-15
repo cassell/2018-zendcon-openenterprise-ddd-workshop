@@ -33,4 +33,9 @@ class Kilograms
     {
         return new self($this->getValue() + $kilograms->getValue());
     }
+
+    public function isZeroWeight(): bool
+    {
+        return $this->value === 0.0;
+    }
 }

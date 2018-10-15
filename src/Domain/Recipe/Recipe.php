@@ -14,9 +14,11 @@ class Recipe
      * @var RecipeName
      */
     private $recipeName;
+    private $weight;
 
     private function __construct(RecipeHistory $events)
     {
+        $this->weight = new Kilograms(0);
         $this->events = $events->toArray();
         foreach ($this->events as $event) {
             $this->applyEvent($event);
@@ -59,12 +61,33 @@ class Recipe
 
     public function addGrain(Grain $grain, Kilograms $kilograms, \DateTimeImmutable $occurredOn = null): void
     {
-        // TODO: Implement
+        if($kilograms->isZeroWeight()) {
+            throw new \InvalidArgumentException("Unable to measure less than 0.1 on scale.");
+        }
+
+        $this->recordThat(new GrainWasAddedToRecipe(
+            $this->id,
+            $grain->getId(),
+            $grain->getName(),
+            $grain->getDegreesLintner(),
+            $grain->getLovibond(),
+            $grain->getGrainType()->getId(),
+            $grain->getGrainType()->getDescription(),
+            $kilograms,
+            $occurredOn
+            )
+        );
+
+    }
+
+    public function applyGrainWasAddedToRecipeEvent(GrainWasAddedToRecipe $event)
+    {
+        $this->weight = $this->weight->add($event->getKilograms());
     }
 
     public function getWeightOfGrainsInKilos(): Kilograms
     {
-        // TODO: Implement
+        return $this->weight;
     }
 
     public function getName(): RecipeName
